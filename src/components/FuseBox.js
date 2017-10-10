@@ -14,7 +14,7 @@ export default class FuseBox extends React.Component {
   }
 
   state = {
-    isOpen: false,
+    isOpen: false
   };
 
   componentDidMount() {
@@ -31,8 +31,8 @@ export default class FuseBox extends React.Component {
 
   render() {
     return (
-      <div className="FuseBackground">
-        {this.props.popup(this.state.isOpen, this.onClose.bind(this))}
+      <div className={`${this.state.isOpen && 'FuseBackground'}`}>
+        {this.props.popup(this.state.isOpen, this._onClose.bind(this))}
       </div>
     );
   }
