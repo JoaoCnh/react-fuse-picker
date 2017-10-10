@@ -1,0 +1,77 @@
+.FuseBackground {
+    background: rgba(0, 0, 0, 0.2);
+    
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-top: 300px; // fall back
+    padding-top: 25vh;
+
+    z-index: $z-index;
+}
+
+.FusePicker {
+    max-width: 600px;
+    
+    background: $primary-color;
+    border: 1px solid darken($primary-color, 25%);
+    border-radius: 4px;
+    box-shadow: 0px 0px 16px $black;
+    font-size: 1rem;
+
+    display: flex;
+    flex-direction: column;
+
+    .FuseInfo {
+        color: $dark-gray;
+        margin-top: .5em;
+        margin-left: .5rem;
+        margin-right: .5rem;
+        font-size: .8em;
+        user-select: none;
+
+        .FuseInstructions {
+            float: right;
+            span {
+                margin: .35em;
+            }
+        }
+    }
+
+    .FuseInput {
+        border: 1px solid $gray;
+        border-radius: 4px;
+        outline: none;
+  
+        flex: 1;
+        font-size: 2.4em;
+        padding: 1rem;
+        margin: .5rem;
+    }
+
+    .FuseResults {
+        list-style-type: none;
+        padding-left: 0px;
+        margin-top: .2em;
+        margin-bottom: .5em;
+
+        .FuseResult {
+            margin: .1em .5rem;
+            padding: .6em .5em;
+            border-radius: 4px;
+            cursor: pointer;
+            color: $white;
+
+            &.selected {
+                background-color: $highlight-color;
+            }
+        }
+    }
+}

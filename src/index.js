@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import FusePicker from './components/FusePicker';
+import FuseBox from './components/FuseBox';
 
-export default class extends Component {
-  render() {
-    return <div>
-      <h2>Welcome to React components</h2>
-    </div>
-  }
-}
+import './scss/index.scss';
+
+export {
+  FusePicker as default,
+  FuseBox,
+};
