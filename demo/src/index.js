@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 
-import FuzzyPicker from "../../src";
+import FusePicker, { FuseBox } from "../../src";
 
 class Demo extends Component {
   state = {
@@ -194,11 +194,30 @@ class Demo extends Component {
         </div>
         <div className="col-4" />
         <div className="col-4">
-          <FuzzyPicker
+          <h2>Fixed Input Picker</h2>
+          <FusePicker
             isOpen={true}
             items={JSON.parse(this.state.items)}
             renderItem={item => item.title}
+            onChange={item => alert(`Chose: ${item.title}`)}
             fuseOptions={this.state.fuseOptions}
+          />
+          <hr />
+          <h2>
+            Callable Picker - Try with <kbd>ctrl</kbd> + <kbd>s</kbd>
+          </h2>
+          <FuseBox
+            isKeyPressed={() => event.keyCode === 83 && event.ctrlKey}
+            popup={(isOpen, onClose) => (
+              <FusePicker
+                isOpen={isOpen}
+                onClose={onClose}
+                renderItem={item => item.title}
+                onChange={item => alert(`Chose: ${item.title}`)}
+                items={JSON.parse(this.state.items)}
+                fuseOptions={this.state.fuseOptions}
+              />
+            )}
           />
         </div>
       </div>
