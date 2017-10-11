@@ -200,6 +200,8 @@ class Demo extends Component {
     return (
       <div className="row">
         <div className="col-3">
+          <h3>Step 1: Define your items</h3>
+          <hr />
           <textarea
             style={{ minWidth: "100%", minHeight: 500 }}
             defaultValue={this.state.items}
@@ -207,6 +209,8 @@ class Demo extends Component {
           />
         </div>
         <div className="col-4">
+          <h3>Step 2: Define your fuse options</h3>
+          <hr />
           <div className="form-group">
             <div className="form-check">
               <label className="form-check-label">
@@ -279,8 +283,20 @@ class Demo extends Component {
               for highlighting purposes.
             </span>
           </div>
+
+          <hr />
+
+          <h3>
+            You get the point. Go to{" "}
+            <a href="http://fusejs.io/" target="_blank">
+              http://fusejs.io/
+            </a>{" "}
+            for more details on Fuse.js
+          </h3>
         </div>
         <div className="col-5">
+          <h3>Step 3: Use the picker</h3>
+          <hr />
           <h2>Fixed Input Picker</h2>
           <FusePicker
             isOpen={true}
