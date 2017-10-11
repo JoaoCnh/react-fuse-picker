@@ -12,6 +12,7 @@
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
+[![license](http://img.shields.io/npm/l/react-loki.svg)](./LICENSE)
 
 ## react-fuse-picker is a ready to use Fuzzy Search (using fuse.js) Picker.
 
@@ -35,8 +36,21 @@ yarn add react-fuse-picker
 - [Demo](#demo)
 - [Importing Styles](#importing-styles)
 - [API](#api)
-    - [`<FusePicker />`](#fuse-picker-)
-    - [`<FuseBox />`](#fuse-box-)
+    - [`<FusePicker />`](#fusepicker-)
+        - [FusePicker props](#fusepicker-props)
+            - [`items: array`](#items-array-)
+            - [`maxDisplay: integer`](#maxdisplay-integer-)
+            - [`cycleToTop: boolean`](#cycletotop-boolean-)
+            - [`fuseOptions: object`](#fuseoptions-object-)
+            - [`onChange: function`](#onchange-function-)
+            - [`onClose: function`](#onclose-function-)
+            - [`renderItem: function`](#renderitem-function-)
+            - [`renderInfo: function`](#renderinfo-function-)
+            - [`itemValue: function`](#itemvalue-function-)
+    - [`<FuseBox />`](#fusebox-)
+        - [FuseBox props](#fusebox-props)
+            - [`isKeyPressed: function`](#iskeypressed-function-)
+            - [`popup: function`](#popup-function-)
 
 ## Usage
 
@@ -63,8 +77,8 @@ yarn add react-fuse-picker
         onClose={onClose}
         renderItem={item => item.title}
         onChange={item => alert(`Chose: ${item.title}`)}
-        items={JSON.parse(this.state.items)}
-        fuseOptions={this.state.fuseOptions}
+        items={yourItems}
+        fuseOptions={yourFuseOptions}
         />
     )}
 />
@@ -84,3 +98,58 @@ You can also try out the [demo](https://joaocnh.github.io/react-fuse-picker)
 ### `<FusePicker />`
 
 `<FusePicker />` is the component that controls the picker behaviour
+
+#### FusePicker props
+
+##### `items: array`
+
+The items on which the fuzzy search will be applied.
+
+##### `maxDisplay: integer`
+
+The maximum number of results displayed by the picker.
+
+##### `cycleToTop: boolean`
+
+If `true` when the user goes to the last result and navigates further down, it goes back to the first result.
+
+##### `fuseOptions: object`
+
+The object containing all Fuse.js configuration. For more info visit [Fuse.js](http://fusejs.io/)
+
+##### `onChange: function`
+
+Callback for when the user selects an option. It receives the `item` as param.
+
+##### `onClose: function`
+
+Callback for when the user closes the picker.
+
+##### `renderItem: function`
+
+Function that will render each single result item.
+
+##### `renderInfo: function`
+
+Function that will render the info/instructions of the picker on top of the input.
+Create your own and return `null` if you don't want any info.
+
+##### `itemValue: function`
+
+Function that allows you to customize the return value of the picker. By default it returns the whole item (object) but you can customize it if you so desire.
+
+### `<FuseBox />`
+
+`<FuseBox />` is the component that will wrap a `<FusePicker />` in order to show it on command press.
+
+#### FuseBox props
+
+##### `isKeyPress: function`
+
+Function that will check if the right command was pressed in order to show the picker.
+
+You can define any kind of combination of key events you want.
+
+##### `popup: function`
+
+Function in which you must render out your `<FusePicker />`. Check the demo above to see how!
