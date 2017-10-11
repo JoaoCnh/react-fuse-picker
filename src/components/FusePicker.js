@@ -99,6 +99,10 @@ export default class FusePicker extends React.Component {
     this.setState({ items: [], selectedIndex: 0 });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.fuse = new Fuse(nextProps.items, nextProps.fuseOptions);
+  }
+
   render() {
     if (!this.props.isOpen) {
       return null;
