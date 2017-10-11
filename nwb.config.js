@@ -2,7 +2,12 @@ module.exports = {
   type: 'react-component',
   npm: {
     esModules: true,
-    umd: false
+    umd: {
+      global: "ReactFusePicker",
+      externals: {
+          react: "React"
+      }
+    }
   },
   webpack: {
       html: {
