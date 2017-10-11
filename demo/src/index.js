@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import { debounce } from "throttle-debounce";
 
 import FusePicker, { FuseBox } from "../../src";
 
 class Demo extends Component {
+  constructor(props) {
+    super(props);
+    this._updateItems = debounce(500, this._updateItems);
+  }
+
   state = {
     items: JSON.stringify(
       [
@@ -173,27 +179,108 @@ class Demo extends Component {
       4
     ),
     fuseOptions: {
+      caseSensitive: false,
+      includeScore: false,
+      includeMatches: false,
       shouldSort: true,
       threshold: 0.6,
       location: 0,
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ["title", "author.firstName"]
+      keys: ["title", "author.firstName", "author.lastName"]
     }
   };
+
+  _updateItems(items) {
+    this.setState({ items });
+  }
 
   render() {
     return (
       <div className="row">
-        <div className="col-4">
+        <div className="col-3">
           <textarea
             style={{ minWidth: "100%", minHeight: 500 }}
-            value={this.state.items}
+            defaultValue={this.state.items}
+            onKeyUp={event => this._updateItems(event.target.value)}
           />
         </div>
-        <div className="col-4" />
         <div className="col-4">
+          <div className="form-group">
+            <div className="form-check">
+              <label className="form-check-label">
+                <input
+                  className="form-check-input mr-1"
+                  type="checkbox"
+                  value={this.state.fuseOptions.caseSensitive}
+                  onChange={event =>
+                    this.setState({
+                      fuseOptions: {
+                        ...this.state.fuseOptions,
+                        caseSensitive: event.target.checked
+                      }
+                    })}
+                />
+                {`Case sensitive`}
+              </label>
+            </div>
+            <span className="form-text text-muted">
+              {`Indicates whether comparisons should be case sensitive.`}
+            </span>
+          </div>
+          <div className="form-group">
+            <div className="form-check">
+              <label className="form-check-label">
+                <input
+                  className="form-check-input mr-1"
+                  type="checkbox"
+                  value={this.state.fuseOptions.includeScore}
+                  onChange={event =>
+                    this.setState({
+                      fuseOptions: {
+                        ...this.state.fuseOptions,
+                        includeScore: event.target.checked
+                      }
+                    })}
+                />
+                {`Include score`}
+              </label>
+            </div>
+            <span className="form-text text-muted">
+              Whether the score should be included in the result set. A score of{" "}
+              <code>0</code> indicates a perfect match, while a score of{" "}
+              <code>1</code> indicates a complete mismatch.
+            </span>
+          </div>
+          <div className="form-group">
+            <div className="form-check">
+              <label className="form-check-label">
+                <input
+                  className="form-check-input mr-1"
+                  type="checkbox"
+                  value={this.state.fuseOptions.includeMatches}
+                  onChange={event =>
+                    this.setState({
+                      fuseOptions: {
+                        ...this.state.fuseOptions,
+                        includeMatches: event.target.checked
+                      }
+                    })}
+                />
+                {`Include matches`}
+              </label>
+            </div>
+            <span className="form-text text-muted">
+              Whether the matches should be included in the result set. When{" "}
+              <code>true</code>, each record in the result set will include the
+              indices of the matched characters:{" "}
+              <code>indices: [start, end]</code>. These can consequently be used
+              for highlighting purposes.
+            </span>
+          </div>
+        </div>
+        <div className="col-5">
           <h2>Fixed Input Picker</h2>
           <FusePicker
             isOpen={true}

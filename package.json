@@ -30,7 +30,8 @@
     "nwb": "0.18.x",
     "nwb-sass": "^0.8.1",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "throttle-debounce": "^1.0.1"
   },
   "author": "",
   "homepage": "",
