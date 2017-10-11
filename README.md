@@ -1,8 +1,8 @@
 [build-badge]: https://img.shields.io/travis/JoaoCnh/react-fuse-picker/master.png?style=flat-square
 [build]: https://travis-ci.org/JoaoCnh/react-fuse-picker
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+[npm-badge]: https://badge.fury.io/js/react-fuse-picker.svg
+[npm]: https://www.npmjs.org/package/react-fuse-picker
 
 [coveralls-badge]: https://coveralls.io/repos/github/JoaoCnh/react-fuse-picker/badge.svg?branch=master&style=flat-square
 [coveralls]: https://coveralls.io/github/JoaoCnh/react-fuse-picker
