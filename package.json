@@ -2,6 +2,10 @@
   "name": "react-fuse-picker",
   "version": "1.0.0",
   "description": "react-fuse-picker React component",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoaoCnh/react-fuse-picker.git"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
